@@ -2,7 +2,7 @@ class Solution {
 public:
     int rob(vector<int>& nums) {
         
-        int n = nums.size(), x, maxProfit;
+        int n = nums.size(), x;
         vector<int> dp(n,0);
 
         dp[0] = nums[0];
@@ -12,9 +12,8 @@ public:
 
             int pick = nums[i] + x;
             int notPick = dp[i-1];
-
-            maxProfit = max(pick, notPick);
-            dp[i] = maxProfit;
+            
+            dp[i] = max(pick, notPick);
         }
 
         return dp[n-1];
